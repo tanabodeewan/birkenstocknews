@@ -104,6 +104,7 @@ main .wrap { display: grid; gap: 52px; padding-block: 32px 44px; }
 .pd-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
 .pd-bar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
 .trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.trio.duo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .seg-tabs { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; padding: 3px; gap: 3px; justify-self: start; }
 .seg-tabs button { background: none; border: 0; padding: 8px 12px; border-radius: 6px; font-weight: 600; font-size: 14px; color: var(--muted); min-height: 38px; }
 .seg-tabs button[aria-pressed="true"] { background: var(--navy); color: #fff; }
@@ -215,7 +216,7 @@ footer { border-top: 1px solid var(--rule); }
 footer .wrap { padding-block: 16px 26px; font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; }
 
 @media (max-width: 880px) {
-  .three, .trio, .fin2, .ideas, .out { grid-template-columns: minmax(0, 1fr); }
+  .three, .trio, .trio.duo, .fin2, .ideas, .out { grid-template-columns: minmax(0, 1fr); }
   .bbg { grid-template-columns: minmax(0, 1fr); }
   .plan { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .plan div:last-child { grid-column: span 2; }
@@ -230,6 +231,7 @@ footer .wrap { padding-block: 16px 26px; font-size: 13px; color: var(--muted); d
   .swipe { display: block; }
   .pd-frame { height: 600px; } .pd-frame[data-ch="2"] { height: 500px; }
   .seg-head h2 { font-size: 18px; }
+  .seg-head .lbl { flex: 0 1 auto; max-width: 44%; line-height: 1.2; font-size: 12px; }
   .seg-head .lbl { font-size: 12px; padding-inline: 10px 12px; }
   .take { grid-template-columns: 44px minmax(0, 1fr); gap: 2px 10px; }
   .take b { grid-row: span 2; font-size: 34px; }
@@ -292,7 +294,7 @@ footer .wrap { padding-block: 16px 26px; font-size: 13px; color: var(--muted); d
 
 <nav class="strip" aria-label="Segments">
   <div class="wrap">
-    <a href="#story">The story</a><a href="#basics">Basics</a><a href="#past">Past</a><a href="#present">Present</a><a href="#future">Future</a>
+    <a href="#story">The story</a><a href="#basics">Basics</a><a href="#present">What’s going on with the stocks?</a><a href="#future">Future</a>
   </div>
 </nav>
 
@@ -335,7 +337,7 @@ footer .wrap { padding-block: 16px 26px; font-size: 13px; color: var(--muted); d
       </div>
       <p class="src">Toy model, shapes exaggerated. Drag to rotate the 3D views.</p>
     </div>
-    <div class="trio">
+    <div class="trio duo">
       <div class="card">
         <h3>Who buys</h3>
         <div class="seg-tabs" role="group" aria-label="Split customers by">
@@ -347,16 +349,6 @@ footer .wrap { padding-block: 16px 26px; font-size: 13px; color: var(--muted); d
         <p class="src">IPO prospectus 2023, survey of ~70,000 customers</p>
       </div>
       <div class="card">
-        <h3>Culture</h3>
-        <p class="quote">“Walk as nature intended.”</p>
-        <div class="vals">
-          <div><b>Function</b><span>Supports heel, arch and forefoot</span></div>
-          <div><b>Quality</b><span>Footbeds all made in Germany</span></div>
-          <div><b>Tradition</b><span>New looks, same footbed</span></div>
-        </div>
-        <p class="who">No Amazon since 2017. The CEO calls the brand “beyond fashion.”</p>
-      </div>
-      <div class="card">
         <h3>Leaders and rivals</h3>
         <p class="who"><b>Oliver Reichert</b>, CEO since 2013, first boss from outside the family.<br><b>L Catterton</b>, largest owner (~45%), partly backed by Louis Vuitton’s parent LVMH.</p>
         <div class="rivals"><span>Crocs</span><span>UGG · HOKA</span><span>Dr. Martens</span><span>Ecco</span><span>Keen</span><span>Look-alikes</span></div>
@@ -365,14 +357,8 @@ footer .wrap { padding-block: 16px 26px; font-size: 13px; color: var(--muted); d
     </div>
   </section>
 
-  <section class="seg" id="past" aria-labelledby="h-past">
-    <div class="seg-head"><span class="lbl">PAST</span><h2 id="h-past">One shoe, many identities</h2></div>
-    <div class="tl-rail" role="tablist" aria-label="Birkenstock timeline" id="tlRail"></div>
-    <div class="tl-panel" id="tlPanel" role="tabpanel" aria-live="polite"></div>
-  </section>
-
   <section class="seg" id="present" aria-labelledby="h-present">
-    <div class="seg-head"><span class="lbl">PRESENT</span><h2 id="h-present">Success story vs. trust story</h2></div>
+    <div class="seg-head"><span class="lbl">WHAT’S GOING ON WITH THE STOCKS?</span><h2 id="h-present">Success story vs. trust story</h2></div>
 
     <div class="fin2">
       <div class="card">
@@ -400,15 +386,6 @@ footer .wrap { padding-block: 16px 26px; font-size: 13px; color: var(--muted); d
     </div>
 
     <p class="verdict">Profit keeps rising, but investors pay less for it. They are betting on whether the hype will last.</p>
-
-    <div class="dial">
-      <span class="kicker">The central problem · try it yourself</span>
-      <label for="scar">How much of each store order should Birkenstock deliver?</label>
-      <input id="scar" type="range" min="0" max="2" step="1" value="1">
-      <div class="dial-scale" aria-hidden="true"><span>Half</span><span>3 of 4 pairs (today)</span><span>Everything</span></div>
-      <div class="out" id="scarOut" aria-live="polite"></div>
-      <p class="src">“3 of 4” and ~90% full price: Evercore via KrASIA. “Half” and “Everything” are our own scenarios.</p>
-    </div>
   </section>
 
   <section class="seg" id="future" aria-labelledby="h-future">
@@ -441,7 +418,6 @@ footer .wrap { padding-block: 16px 26px; font-size: 13px; color: var(--muted); d
       <li><a href="https://sgbonline.com/exec-birkenstocks-shares-drop-10-percent-on-tariff-warning-soft-guidance/">SGB: Dec 2025, shares −11.3%</a></li>
       <li><a href="https://www.thestar.com.my/business/business-news/2026/05/15/birkenstock-warns-of-higher-costs-from-tariffs-crisis">Reuters via The Star: May 2026, shares −13%</a></li>
       <li><a href="https://fashionunited.uk/news/business/l-catterton-to-sell-approximately-one-billion-dollars-worth-of-birkenstock-shares/2026081789836">FashionUnited: Aug 2026 $1B share sale</a></li>
-      <li><a href="https://kr-asia.com/how-lvmh-turned-ugly-birkenstock-into-a-luxury-brand">KrASIA citing Evercore: scarcity</a></li>
       <li><a href="https://www.yahoo.com/lifestyle/birkenstock-riding-high-searches-soar-143114021.html">Footwear News: Barbie search surge</a></li>
       <li><a href="https://amp.cbc.ca/news/business/birkenstock-sandals-art-german-court-1.7463649">CBC: German court ruling, 2025</a></li>
     </ul>
@@ -625,35 +601,6 @@ footer .wrap { padding-block: 16px 26px; font-size: 13px; color: var(--muted); d
   document.querySelectorAll('[data-split]').forEach(function (b) { b.addEventListener('click', function () { drawCust(b.dataset.split); }); });
   drawCust('gen');
 
-  /* Timeline */
-  var TL = [
-    ['1774', 'Cobbler', 'The shoemaker', 'Johann Adam Birkenstock appears in church records as a shoemaker.'],
-    ['1966', 'Hippie', 'Too ugly for shoe stores', 'Margot Fraser brings the sandals to California. Shoe stores refuse them, so she sells them in health-food stores. Hippies love them.'],
-    ['1973', 'Classic', 'The Arizona', 'The two-strap sandal launches and becomes the shoe of teachers, doctors and Steve Jobs.'],
-    ['2012', 'Runway', 'The “Furkenstock”', 'Céline sends a fur-lined, Birkenstock-style sandal down the runway for over €450. Fashion wants the ugly shoe.'],
-    ['2020', 'Lockdown', 'Comfort is the dress code', 'Working from home makes the “dad sandal” normal. The Arizona is the most-searched shoe on Lyst in spring 2020.'],
-    ['2022', 'Luxury', 'Dior and the clog', 'Dior and Manolo Blahnik collaborations. The Boston clog is Lyst’s shoe of the year, searches +593%.'],
-    ['2023', 'Pop culture', 'Barbie, then Wall Street', 'Barbie picks the pink Birkenstock: searches +110%, the pair sells out. In October the shares list at $46.']
-  ];
-  var rail = $('tlRail'), panel = $('tlPanel'), cur = 0;
-  rail.innerHTML = TL.map(function (t, i) {
-    return '<button class="yr" type="button" role="tab" id="yr' + i + '" aria-controls="tlPanel" aria-selected="false" data-i="' + i + '"><b>' + t[0] + '</b><i aria-hidden="true"></i><span>' + t[1] + '</span></button>';
-  }).join('');
-  function showTL(i) {
-    cur = Math.max(0, Math.min(TL.length - 1, i));
-    var t = TL[cur];
-    panel.innerHTML = '<span class="when">' + t[0] + '</span><div style="display:grid;gap:4px;min-width:0"><h3>' + t[2] + '</h3><p>' + t[3] + '</p></div>' +
-      '<div class="tl-nav"><button class="btn ghost" type="button" data-step="-1"' + (cur === 0 ? ' disabled' : '') + '>Earlier</button><button class="btn" type="button" data-step="1"' + (cur === TL.length - 1 ? ' disabled' : '') + '>Later</button></div>';
-    panel.setAttribute('aria-labelledby', 'yr' + cur);
-    rail.querySelectorAll('.yr').forEach(function (b, k) { b.setAttribute('aria-selected', String(k === cur)); b.tabIndex = k === cur ? 0 : -1; });
-  }
-  rail.addEventListener('click', function (e) { var b = e.target.closest('.yr'); if (b) showTL(+b.dataset.i); });
-  rail.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); showTL(cur + (e.key === 'ArrowRight' ? 1 : -1)); $('yr' + cur).focus(); }
-  });
-  panel.addEventListener('click', function (e) { var b = e.target.closest('[data-step]'); if (b) showTL(cur + +b.dataset.step); });
-  showTL(0);
-
   /* Revenue and EPS (Bloomberg) */
   function cols(el, xel, data, max, dec, hlIdx) {
     $(el).innerHTML = data.map(function (r, i) {
@@ -706,21 +653,6 @@ footer .wrap { padding-block: 16px 26px; font-size: 13px; color: var(--muted); d
   }
   evBox.addEventListener('click', function (e) { var b = e.target.closest('[data-ev]'); if (b) showEv(ce + +b.dataset.ev, true); });
   showEv(3);
-
-  /* Scarcity dial */
-  var SC = [
-    { plus: ['Ultra exclusive', 'Waiting lists, never discounted.'], minus: ['Lost sales, more dupes', 'Fans buy a cheap look-alike instead.'], who: ['A luxury house', 'Like Ferrari capping production. Investors get impatient.'] },
-    { plus: ['~90% sold at full price', 'Stores get 3 pairs for every 4 ordered.'], minus: ['Growth capped on purpose', '13–15% a year, slower than investors hoped.'], who: ['Birkenstock today', '“We’d rather grow slower than become everywhere.”'] },
-    { plus: ['Fast growth now', 'Every order filled, sales jump.'], minus: ['Discounts, then decline', 'Shoes pile up, prices fall, the brand feels common.'], who: ['The Dr. Martens path', 'A cult shoe that grew too fast and lost most of its value.'] }
-  ];
-  var scar = $('scar');
-  function drawScar() {
-    var s = SC[+scar.value];
-    $('scarOut').innerHTML = '<div class="plus"><small>Upside</small><b>' + s.plus[0] + '</b><p>' + s.plus[1] + '</p></div><div class="minus"><small>Downside</small><b>' + s.minus[0] + '</b><p>' + s.minus[1] + '</p></div><div><small>Looks like</small><b>' + s.who[0] + '</b><p>' + s.who[1] + '</p></div>';
-    scar.setAttribute('aria-valuetext', ['Half of each order', 'Three of four pairs, today', 'Every order in full'][+scar.value]);
-  }
-  scar.addEventListener('input', drawScar); drawScar();
-
 
   var links = document.querySelectorAll('.strip a');
   if ('IntersectionObserver' in window) {
